@@ -15,8 +15,9 @@ npm install -g nodemon
 
 Пример:
 
-
+```
 TELEGRAM_BOT_TOKEN=bot1234567:f3uyceifnoqwfuqwfnqrf6
+```
 
 В личном Telegram зайдите в вашего бота и нажмите Start
 
