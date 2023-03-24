@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "build",
+    "rootDir": "./",
+    "skipLibCheck": true
+  },
+  "ts-node": {
+    "transpileOnly": true
+  },
+  "exclude": [
+    "./build",
+    "./files",
+    "node_modules",
+    "./node_modules",
+    "./node_modules/*",
+    "./node_modules/@types/node/index.d.ts"
+  ],
+  "include": [
+    "./services/*.ts",
+    "./models/*.ts",
+    "./index.ts",
+    "./routes/*.ts"
+  ]
+}
