@@ -2,6 +2,13 @@
 
 ## Подготовка
 
+Устновите глобально TypeScript и Nodemon.
+
+```
+npm install -g typescript
+npm install -g nodemon
+```
+
 Создайте новый бот через https://t.me/BotFather
 
 Добавьте в папку /api файл ".env". В него добавьте токен от вашего бота, который вы получили от https://t.me/BotFather
@@ -19,10 +26,10 @@ TELEGRAM_BOT_TOKEN=bot1234567:f3uyceifnoqwfuqwfnqrf6
 
 1. Через терминал зайдите в папку /api и выполните команды 
 
-
-    npm i 
-    npm run dev
-
+```
+npm i 
+npm run dev
+```
 
 2. Откройте адрес http://localtost:9001. Вы должны увидеть {ok: true}
 
