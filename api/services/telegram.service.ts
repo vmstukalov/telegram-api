@@ -40,10 +40,40 @@ export async function sendTelegramMessage(chat_id, html, reply_markup) {
 
 /**
  * https://core.telegram.org/bots/api#sendphoto
+ * @chat_id id получателя в Telegram
+ * @html текст сообщения, можно в формате html
+ * @reply_markup клавиатура под сообщением, может быть null
  * */
 
-export async function sendTelegramPhoto() {
+export async function sendTelegramPhoto(chat_id, photo_url, caption, reply_markup) {
 
-    console.log("Send Photo")
+    const token = process.env.TELEGRAM_BOT_TOKEN
+    const url = "https://api.telegram.org/bot" + token + "/sendPhoto"
+    let result
+
+    const data = {
+        photo: photo_url.replace(/\\n/g, "\n"),
+        chat_id: chat_id,
+        caption: caption,
+        disable_web_page_preview: true,
+        parse_mode: 'html',
+    }
+
+    if (reply_markup) {
+        data['reply_markup'] = reply_markup
+    }
+
+    try {
+        await axios.post(url, data, {
+            headers: {'Content-type': 'application/json'}
+        })
+        result = {ok: true}
+    } catch (e) {
+        console.error(e.response.data)
+
+        result = {ok: false}
+    }
+
+    return result
 
 }
