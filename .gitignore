@@ -1,3 +1,7 @@
 # Project exclude paths
 /api/node_modules/
 /api/.env
+/api/test
+.DS_Store
+.idea/vcs.xml
+api/.DS_Store
