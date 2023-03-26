@@ -1,6 +1,7 @@
 import express from 'express';
 import {sendTelegramMessage, sendTelegramPhoto} from "../services/telegram.service";
 import {IMessage} from "../telegram_objects/Message";
+import {IMessageWithPhoto} from "../telegram_objects/Photo";
 
 const telegramRouter = express.Router()
 
@@ -28,11 +29,25 @@ telegramRouter.post('/sendMessage', async (req, res) => {
 
 })
 
+/**
+ * Отправляет фото от имени Telegram бота
+ * в тело запроса (req.body) нужно передать JSON объект IMessageWithPhoto: {recipient_id: id получателя,
+ * photo: ссылка на фото},
+ */
+
 telegramRouter.post('/sendPhoto', async (req, res) => {
+    const photoData: IMessageWithPhoto = req.body;
 
-    await sendTelegramPhoto();
+    const replyMarkup = {
+        inline_keyboard: [[
+            { text: "LIKE", url: "https://google.com" },
+            { text: "DISLIKE", url: "https://github.com" },
+        ]]
+    };
 
-    res.json({ok: true})
-})
+    await sendTelegramPhoto(photoData.recipient_id, photoData.photo_url, photoData.caption, replyMarkup);
+
+    res.json({ ok: true });
+});
 
 export default telegramRouter
