@@ -44,3 +44,14 @@ npm run dev
 ```
 
 В ваш бот должно поступить сообщение.
+
+4. Через Postman или другой клиент сделайте POST запрос http://localtost:9001/telegram/sendPhoto с телом запроса
+
+```
+{
+    "recipient_id": id полученное от @userinfobot,
+    "photo_url": "https://www.istockphoto.com/tr/vekt%C3%B6r/izlenim-gm1252787937-365686659"
+}
+```
+
+В ваш бот должно поступить сообщение.
